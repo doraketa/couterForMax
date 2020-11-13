@@ -6,8 +6,8 @@
 
 struct Summa
 {
-	int summValues;
-	int summCount;
+	int summValues = 0;
+	int summCount = 0;
 	bool isParity;
 };
 
@@ -29,12 +29,11 @@ int sum(int x, int y)
 
 int main(void)
 {
-
+	Summa sSumm;
+	
 	FILE* fp;
 	char str[130];
 	int k = 0;
-
-	Summa sSumm;
 
 	if (fopen_s(&fp, "sss.txt", "r") != 0)
 	{
@@ -51,12 +50,13 @@ int main(void)
 			// = sum(k, atoi(str));
 			sSumm.summValues = sum(k, atoi(str));
 		}
-		sSumm.summCount++;
+		sSumm.summCount += 1;
 
 		sSumm.isParity = (sSumm.summValues % 2 == 0) ? true : false;
 	}
 
 	fclose(fp);
+
 	printf("k:%i", sSumm.summValues);
 	return 0;
 }
